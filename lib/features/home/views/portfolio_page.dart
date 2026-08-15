@@ -4,6 +4,7 @@ import '../../../core/widgets/futuristic_background.dart';
 import '../../../core/widgets/glass_container.dart';
 import '../../../data/repositories/portfolio_repository.dart';
 import '../../about/views/about_section.dart';
+import '../../about/views/engineering_pillars_section.dart';
 import '../../contact/views/contact_section.dart';
 import '../../footer/views/footer_section.dart';
 import '../../navigation/nav_controller.dart';
@@ -72,6 +73,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     navController: _navController,
                     repository: _repository,
                   ),
+                  const EngineeringPillarsSection(),
                   WorksSection(
                     navController: _navController,
                     repository: _repository,

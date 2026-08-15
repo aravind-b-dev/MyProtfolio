@@ -26,14 +26,16 @@ class HomeSection extends StatelessWidget {
         minHeight: MediaQuery.of(context).size.height,
       ),
       padding: EdgeInsets.only(
-        top: isMobile ? 120 : 160,
+        top: isMobile ? 110 : 150,
         bottom: 80,
         left: isMobile ? 20 : (isTablet ? 40 : 80),
         right: isMobile ? 20 : (isTablet ? 40 : 80),
       ),
       child: Center(
         child: Container(
-          constraints: const BoxConstraints(maxWidth: Breakpoints.maxContentWidth),
+          constraints: const BoxConstraints(
+            maxWidth: Breakpoints.maxContentWidth,
+          ),
           child: ScrollReveal(
             keyName: 'home_section',
             child: ResponsiveLayout(
@@ -51,16 +53,10 @@ class HomeSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // Left Column: Hero Text & CTAs
-        Expanded(
-          flex: 6,
-          child: _buildHeroContent(context),
-        ),
+        Expanded(flex: 6, child: _buildHeroContent(context)),
         const SizedBox(width: 40),
         // Right Column: Futuristic Developer Floating Glass Card
-        const Expanded(
-          flex: 5,
-          child: Center(child: FloatingDevCard()),
-        ),
+        const Expanded(flex: 5, child: Center(child: FloatingDevCard())),
       ],
     );
   }
@@ -83,32 +79,68 @@ class HomeSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Tagline Badge
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 8,
-              height: 8,
-              decoration: const BoxDecoration(
-                color: AppColors.accentCyan,
-                shape: BoxShape.circle,
+        // Status Badge Row
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+          decoration: BoxDecoration(
+            color: AppColors.glassBase,
+            borderRadius: BorderRadius.circular(30),
+            border: Border.all(
+              color: AppColors.accentCyan.withValues(alpha: 0.3),
+              width: 1.0,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.accentCyan.withValues(alpha: 0.1),
+                blurRadius: 12,
               ),
-            ),
-            const SizedBox(width: 10),
-            GlassChip(
-              label: "${AppStrings.developerTitle.toUpperCase()} • ${AppStrings.yearsOfExperience}",
-              color: AppColors.accentCyan,
-            ),
-          ],
+            ],
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  color: AppColors.accentEmerald,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.accentEmerald,
+                      blurRadius: 6,
+                      spreadRadius: 1,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 10),
+              Text(
+                "${AppStrings.developerTitle.toUpperCase()} • ${AppStrings.yearsOfExperience}",
+                style: AppTypography.badgeTag(
+                  color: AppColors.accentCyan,
+                  fontSize: 11.5,
+                ),
+              ),
+            ],
+          ),
         ),
         const SizedBox(height: 24),
 
-        // Main Headline
-        Text(
-          AppStrings.headline,
-          style: AppTypography.heroTitle(
-            fontSize: isMobile ? 36 : 56,
+        // Main Headline with Gradient
+        ShaderMask(
+          shaderCallback: (bounds) => const LinearGradient(
+            colors: [
+              AppColors.textPrimary,
+              AppColors.textPrimary,
+              AppColors.accentCyan,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ).createShader(bounds),
+          child: Text(
+            AppStrings.headline,
+            style: AppTypography.heroTitle(fontSize: isMobile ? 36 : 54),
           ),
         ),
         const SizedBox(height: 20),
@@ -116,9 +148,26 @@ class HomeSection extends StatelessWidget {
         // Supporting Text
         Text(
           AppStrings.heroSubhead,
-          style: AppTypography.bodyLarge(
-            fontSize: isMobile ? 15 : 18,
-          ),
+          style: AppTypography.bodyLarge(fontSize: isMobile ? 15 : 17.5),
+        ),
+        const SizedBox(height: 32),
+
+        // Quick Highlights Chips
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: const [
+            GlassChip(label: "SBI YONO Banking", color: AppColors.accentCyan),
+            GlassChip(
+              label: "MobX & BLoC Architecture",
+              color: AppColors.accentPurple,
+            ),
+            GlassChip(label: "AI RAG Chatbots", color: AppColors.accentBlue),
+            GlassChip(
+              label: "Cross-Platform Web & Mobile",
+              color: AppColors.accentEmerald,
+            ),
+          ],
         ),
         const SizedBox(height: 36),
 

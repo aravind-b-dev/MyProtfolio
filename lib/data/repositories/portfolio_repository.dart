@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/project_model.dart';
 import '../models/skill_model.dart';
 import '../models/experience_model.dart';
+import '../models/education_model.dart';
 
 class PortfolioRepository {
   List<ProjectModel> getProjects() {
@@ -9,112 +10,131 @@ class PortfolioRepository {
       ProjectModel(
         id: "sbi_yono",
         title: "SBI YONO Enterprise Banking",
-        subtitle: "Production Scale Mobile Application",
+        subtitle: "Production Mobile Banking App (Millions of Users)",
         description:
-            "Engineered high-concurrency mobile banking modules, complex multi-step transaction journeys, biometric authentication, and enterprise feature-flagged architecture.",
+            "Led critical modules on SBI YONO at Tata Consultancy Services (TCS). Improved application performance and reduced latency through optimized state management (MobX) and API handling.",
         technologies: [
           "Flutter",
           "Dart",
-          "Bloc",
+          "MobX",
           "Clean Architecture",
-          "REST APIs",
-          "Biometrics",
+          "DigiLocker API",
           "Security Hardening"
         ],
-        architecture: "Modular Clean Architecture (Feature-driven + MVVM)",
-        role: "Senior Flutter Engineer / Module Lead",
+        architecture: "Modular Clean Architecture + MobX State Management",
+        role: "Senior Flutter Developer (TCS)",
         keyContributions: [
-          "Developed core transactional flows handling high daily active user volumes with 99.9% uptime.",
-          "Optimized widget rendering tree and reduced cold start latency by 35%.",
-          "Integrated enterprise encryption algorithms, token refreshing, and root detection protocols."
+          "Forex Card Journey (Lead): Owned end-to-end development, scalable architecture, and performance delivery.",
+          "GSA (Group Sampoorna Arogya) Purchase Journey: Developed core purchasing modules and API integrations.",
+          "DigiLocker Integration: Enabled secure document retrieval, consent management, and user onboarding."
         ],
         isEnterprise: true,
       ),
       ProjectModel(
-        id: "forex_journey",
-        title: "Global Forex Trading Platform",
-        subtitle: "Real-time Currency & Trade Management",
+        id: "csb_salesfokuz",
+        title: "CSB Salesfokuz – Banking Sales CRM",
+        subtitle: "Enterprise Banking Sales & CRM App",
         description:
-            "Real-time currency exchange platform featuring WebSocket live order books, dynamic candlestick charting engines, multi-currency wallets, and secure settlement workflows.",
+            "Built a comprehensive sales management application for CSB Bank utilizing MVVM and Provider architecture. Features secure data storage with SQL and REST API cross-platform sync.",
         technologies: [
           "Flutter",
-          "WebSockets",
-          "Riverpod",
-          "CustomPainter",
+          "Provider",
+          "MVVM",
           "SQLite",
-          "JSON RPC"
+          "REST APIs",
+          "Unit & Widget Testing"
         ],
-        architecture: "Layered Repository Pattern with Reactive State Engine",
-        role: "Senior Flutter Architect",
+        architecture: "MVVM with Provider State Management & Repository Layer",
+        role: "Flutter Developer (SkyisLimit)",
         keyContributions: [
-          "Custom canvas chart painter rendering 60 FPS real-time ticker streams.",
-          "Implemented offline data caching strategy with SQLite for pending order queues."
+          "Integrated SQL encryption protocols for sensitive banking customer data.",
+          "Automated testing suite with Unit and Widget tests ensuring zero regression.",
+          "Customized CRM pipeline automation for field sales executives."
         ],
         isEnterprise: true,
       ),
       ProjectModel(
-        id: "gsa_purchase",
-        title: "GSA Procurement & Purchase Journey",
-        subtitle: "Government Enterprise Supply Chain",
+        id: "yono_ai_chatbot",
+        title: "SBI YONO 2.0 AI Assistant",
+        subtitle: "TCS AI Hackathon Winner (Season 2)",
         description:
-            "Multi-platform procurement portal designed for government supply validation, complex multi-tier approvals, invoice generation, and dynamic reactive forms.",
+            "Developed an AI-powered banking chatbot using Python and Gemini LLM as part of the SBI YONO 2.0 team for the TCS AI Hackathon (AI Friday Season 2).",
         technologies: [
-          "Flutter Web",
-          "Flutter Mobile",
-          "Provider",
-          "Form Validation",
+          "Python",
+          "Gemini LLM",
+          "RAG Architecture",
+          "PII Masking",
+          "Flutter Integration"
+        ],
+        architecture: "Retrieval-Augmented Generation (RAG) + Privacy Engine",
+        role: "AI Lead & Flutter Integrator",
+        keyContributions: [
+          "Implemented RAG pipeline to eliminate hallucinations and achieve high response precision.",
+          "Engineered privacy masking layer to secure PII and credential data in real time."
+        ],
+        isEnterprise: false,
+      ),
+      ProjectModel(
+        id: "factfokuz_tallyfokuz",
+        title: "Factfokuz & Tallyfokuz ERP Suite",
+        subtitle: "Workflow Automation & Offline-First ERP",
+        description:
+            "Scalable CRM/ERP mobile applications for business operations, attendance tracking, leave management, expense claims, and order management with pricing engine.",
+        technologies: [
+          "Flutter",
+          "BLoC",
+          "SQLite",
+          "Location Services",
+          "Multi-Language"
+        ],
+        architecture: "Offline-First SQLite Architecture with BLoC",
+        role: "Flutter Developer (SkyisLimit)",
+        keyContributions: [
+          "Offline-first synchronization engine handling background SQLite queueing.",
+          "Real-time location updates and automated pricing engine for field orders."
+        ],
+        isEnterprise: true,
+      ),
+      ProjectModel(
+        id: "dataguru_nrithya",
+        title: "Dataguru & Nrithya EdTech",
+        subtitle: "Education & Video Learning Platforms",
+        description:
+            "Multi-role education applications featuring attendance tracking, real-time push notifications, video stream playback, and dynamic quiz assessment modules.",
+        technologies: [
+          "Flutter",
+          "Firebase Auth",
+          "Firestore",
+          "Video Player",
           "REST APIs"
         ],
-        architecture: "Clean Architecture with Unified Responsive Widgets",
-        role: "Senior Cross-Platform Engineer",
+        architecture: "Feature-Driven Clean Architecture",
+        role: "Flutter Developer (Pebery)",
         keyContributions: [
-          "Single codebase powering Desktop Web and Mobile tablet layouts seamlessly.",
-          "Automated complex field dependencies and validation logic with micro-second responsiveness."
+          "Integrated Firebase Auth & Firestore for instant real-time data sync.",
+          "Built responsive UI/UX supporting both portrait tablet and mobile layouts."
         ],
-        isEnterprise: true,
+        isEnterprise: false,
       ),
       ProjectModel(
-        id: "digilocker_integration",
-        title: "DigiLocker Verification Engine",
-        subtitle: "Government Document & KYC Integration",
+        id: "vastra_dallaal",
+        title: "Vastra & Dallaal Applications",
+        subtitle: "Inventory & Social Matching Platforms",
         description:
-            "High-security document retrieval SDK and verification module enabling seamless identity compliance, OAuth2 authentication, and encrypted PDF parsing.",
+            "Barcode-based retail inventory tracking system (Vastra) and matrimony platform with real-time chat and profile matching algorithms (Dallaal).",
         technologies: [
           "Flutter",
-          "OAuth 2.0",
-          "PKCE",
-          "PDF Parser",
-          "Encrypted Storage"
+          "Barcode Scanner",
+          "WebSockets",
+          "Firebase",
+          "REST APIs"
         ],
-        architecture: "Isolated Module Integration Layer",
-        role: "Lead Integration Specialist",
+        architecture: "MVC / Provider Modular System",
+        role: "Flutter Developer (Pebery)",
         keyContributions: [
-          "Engineered OAuth2 PKCE authorization flow supporting seamless browser custom tabs.",
-          "Optimized file payload handling for high-speed KYC document rendering."
+          "High-speed barcode scanning integration for retail stock auditing.",
+          "Real-time messaging and matching algorithm for matrimony users."
         ],
-        isEnterprise: true,
-      ),
-      ProjectModel(
-        id: "futuristic_ui_engine",
-        title: "Flutter Glassmorphism UI Engine",
-        subtitle: "Open Source Design System",
-        description:
-            "A high-performance custom graphics and glassmorphism UI framework for Flutter Web and Mobile, featuring GPU-accelerated shaders and dynamic particle background system.",
-        technologies: [
-          "Flutter",
-          "Dart",
-          "CustomPainter",
-          "Shaders",
-          "Glassmorphism"
-        ],
-        architecture: "Component-Driven Utility Architecture",
-        role: "Creator & Maintainer",
-        keyContributions: [
-          "Over 500+ GitHub stars and widespread usage across modern Flutter Web portfolios.",
-          "Zero third-party rendering overhead with 60 FPS canvas painting."
-        ],
-        githubUrl: "https://github.com",
-        liveUrl: "https://flutter.dev",
         isEnterprise: false,
       ),
     ];
@@ -123,15 +143,24 @@ class PortfolioRepository {
   List<SkillCategory> getSkillCategories() {
     return const [
       SkillCategory(
-        categoryName: "Flutter & Core",
+        categoryName: "Flutter & Mobile Core",
         icon: Icons.flutter_dash,
         skills: [
           SkillItem(name: "Flutter Framework", level: SkillLevel.expert),
           SkillItem(name: "Dart Language", level: SkillLevel.expert),
-          SkillItem(name: "Flutter Web Engine", level: SkillLevel.expert),
-          SkillItem(name: "Responsive UI Design", level: SkillLevel.expert),
-          SkillItem(name: "Animations & Motion", level: SkillLevel.expert),
-          SkillItem(name: "CustomPainter & Canvas", level: SkillLevel.advanced),
+          SkillItem(name: "Flutter Web & Mobile", level: SkillLevel.expert),
+          SkillItem(name: "Responsive UI/UX", level: SkillLevel.expert),
+          SkillItem(name: "SwiftUI (iOS)", level: SkillLevel.strong),
+        ],
+      ),
+      SkillCategory(
+        categoryName: "State Management",
+        icon: Icons.tune,
+        skills: [
+          SkillItem(name: "MobX", level: SkillLevel.expert),
+          SkillItem(name: "BLoC / Cubit", level: SkillLevel.expert),
+          SkillItem(name: "Provider", level: SkillLevel.expert),
+          SkillItem(name: "GetX", level: SkillLevel.advanced),
         ],
       ),
       SkillCategory(
@@ -139,42 +168,29 @@ class PortfolioRepository {
         icon: Icons.account_tree_outlined,
         skills: [
           SkillItem(name: "Clean Architecture", level: SkillLevel.expert),
-          SkillItem(name: "MVVM / Repository Pattern", level: SkillLevel.expert),
-          SkillItem(name: "SOLID Principles", level: SkillLevel.expert),
-          SkillItem(name: "Dependency Injection", level: SkillLevel.expert),
-          SkillItem(name: "Modular Monorepos", level: SkillLevel.advanced),
+          SkillItem(name: "MVVM / MVC", level: SkillLevel.expert),
+          SkillItem(name: "Repository Pattern", level: SkillLevel.expert),
+          SkillItem(name: "Offline-First SQLite", level: SkillLevel.expert),
         ],
       ),
       SkillCategory(
-        categoryName: "State Management",
-        icon: Icons.tune,
-        skills: [
-          SkillItem(name: "Bloc / Cubit", level: SkillLevel.expert),
-          SkillItem(name: "Provider", level: SkillLevel.expert),
-          SkillItem(name: "Riverpod", level: SkillLevel.advanced),
-          SkillItem(name: "MobX", level: SkillLevel.strong),
-        ],
-      ),
-      SkillCategory(
-        categoryName: "Backend & Integration",
+        categoryName: "Backend & Integrations",
         icon: Icons.cloud_sync,
         skills: [
-          SkillItem(name: "REST APIs & JSON RPC", level: SkillLevel.expert),
-          SkillItem(name: "WebSockets & Streaming", level: SkillLevel.expert),
-          SkillItem(name: "Firebase Services", level: SkillLevel.expert),
-          SkillItem(name: "SQLite & Local Caching", level: SkillLevel.expert),
-          SkillItem(name: "OAuth2 & Security Hardening", level: SkillLevel.advanced),
+          SkillItem(name: "REST APIs", level: SkillLevel.expert),
+          SkillItem(name: "Firebase (Auth, Firestore)", level: SkillLevel.expert),
+          SkillItem(name: "DigiLocker Integration", level: SkillLevel.expert),
+          SkillItem(name: "Python (Gemini LLM & RAG)", level: SkillLevel.advanced),
         ],
       ),
       SkillCategory(
-        categoryName: "DevOps & Engineering",
+        categoryName: "DevOps & Quality",
         icon: Icons.developer_board,
         skills: [
-          SkillItem(name: "Git & Branching Strategies", level: SkillLevel.expert),
-          SkillItem(name: "CI/CD (GitHub Actions, Fastlane)", level: SkillLevel.advanced),
-          SkillItem(name: "Firebase & Vercel Hosting", level: SkillLevel.expert),
+          SkillItem(name: "Git & Version Control", level: SkillLevel.expert),
           SkillItem(name: "Unit & Widget Testing", level: SkillLevel.expert),
-          SkillItem(name: "Performance Profiling & Memory Audit", level: SkillLevel.expert),
+          SkillItem(name: "CI/CD Pipelines", level: SkillLevel.advanced),
+          SkillItem(name: "Agile / Scrum Methodologies", level: SkillLevel.expert),
         ],
       ),
     ];
@@ -183,38 +199,72 @@ class PortfolioRepository {
   List<ExperienceModel> getExperiences() {
     return const [
       ExperienceModel(
-        year: "2024 – Present",
-        title: "Senior Flutter Architect / Technical Lead",
-        company: "Enterprise Mobility Solutions",
+        year: "05/2025 – Present",
+        title: "Senior Flutter Developer",
+        company: "Tata Consultancy Services (TCS), Hyderabad",
         description:
-            "Leading core architecture, state management standards, performance profiling, and cross-platform Flutter Web & Mobile deployments.",
+            "Working on SBI YONO mobile application — one of India’s largest banking platforms serving millions of users. Improved performance and latency through state management & API optimization.",
         highlights: [
-          "Architected enterprise banking and procurement applications serving millions of users.",
-          "Established automated CI/CD pipelines reducing deployment cycles from days to minutes.",
-          "Mentored junior/mid-level Flutter engineers on Clean Code and Bloc patterns."
+          "Forex Card Journey (Lead): Owned end-to-end development, architecture, and performance delivery.",
+          "GSA Purchase Journey: Developed core purchasing modules and API integrations.",
+          "DigiLocker Integration: Enabled secure document retrieval, consent management, and seamless onboarding."
         ],
       ),
       ExperienceModel(
-        year: "2022 – 2024",
-        title: "Lead Flutter Engineer",
-        company: "Fintech & Digital Solutions",
-        description:
-            "Engineered high-concurrency forex platforms, real-time trading dashboards, and government identity integration SDKs.",
-        highlights: [
-          "Integrated WebSocket streaming engines for 60 FPS real-time charting.",
-          "Delivered end-to-end DigiLocker KYC authorization module."
-        ],
-      ),
-      ExperienceModel(
-        year: "2020 – 2022",
+        year: "09/2022 – 04/2025",
         title: "Flutter Developer",
-        company: "Mobile Applications Lab",
+        company: "SkyisLimit Technologies Pvt Ltd",
         description:
-            "Developed responsive mobile and web user interfaces, integrated RESTful microservices, and implemented state management solutions.",
+            "Developed scalable CRM and ERP applications for business operations, workflow automation, and banking sales (CSB Bank).",
         highlights: [
-          "Published multiple production apps to Google Play Store and Apple App Store.",
-          "Pioneered Flutter Web adoption across client applications."
+          "Implemented Provider, BLoC, and GetX architectures.",
+          "Designed offline-first solutions using SQLite for attendance, orders, and expense tracking.",
+          "Followed Agile practices with rigorous unit and widget testing suites."
         ],
+      ),
+      ExperienceModel(
+        year: "03/2021 – 09/2022",
+        title: "Flutter Developer",
+        company: "Pebery Technologies Pvt. Ltd",
+        description:
+            "Developed cross-platform matrimony and education applications with Firebase real-time sync.",
+        highlights: [
+          "Integrated Firebase Auth, Firestore, and REST APIs.",
+          "Designed responsive UI/UX and optimized rendering performance."
+        ],
+      ),
+      ExperienceModel(
+        year: "10/2020 – 02/2021",
+        title: "Flutter Developer Intern",
+        company: "Pebery Technologies Pvt. Ltd",
+        description:
+            "Built foundational expertise in Flutter, Dart, Firebase, and Agile code reviews.",
+        highlights: [
+          "Participated in daily Agile sprint cycles and peer code reviews."
+        ],
+      ),
+    ];
+  }
+
+  List<EducationModel> getEducation() {
+    return const [
+      EducationModel(
+        period: "06/2015 – 05/2018",
+        degree: "Bachelor of Science in Electronics (B.Sc.)",
+        institution: "Mahatma Gandhi University",
+        location: "Kottayam, Kerala",
+      ),
+      EducationModel(
+        period: "04/2013 – 12/2013",
+        degree: "Diploma in Computer Application (DCA)",
+        institution: "Xeon Computers",
+        location: "Kottayam, Kerala",
+      ),
+      EducationModel(
+        period: "04/2013 – 03/2015",
+        degree: "H.S.E (Science)",
+        institution: "Technical Higher Secondary School",
+        location: "Puthuppally, Kottayam",
       ),
     ];
   }

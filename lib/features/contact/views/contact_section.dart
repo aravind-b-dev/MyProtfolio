@@ -101,6 +101,13 @@ class ContactSection extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           _buildInfoItem(
+            Icons.phone_android_rounded,
+            "PHONE",
+            AppStrings.phoneNumber,
+            () => _launch("tel:${AppStrings.phoneNumber.replaceAll(' ', '')}"),
+          ),
+          const SizedBox(height: 16),
+          _buildInfoItem(
             Icons.email_outlined,
             "EMAIL",
             AppStrings.emailAddress,
