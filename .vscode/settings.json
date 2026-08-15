@@ -1,0 +1,5 @@
+{
+    "dart.projectSearchDepth": 5,
+    "dart.openFlutterDocs": "sdk",
+    "dart.checkForSdkUpdates": false
+}

@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "MyPortfolio (Flutter Web Chrome)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "chrome",
+            "program": "lib/main.dart"
+        },
+        {
+            "name": "MyPortfolio (Flutter Web Edge)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "edge",
+            "program": "lib/main.dart"
+        }
+    ]
+}
