@@ -51,5 +51,5 @@ abstract class AppStrings {
 
   // Social Links
   static const String githubUrl = "https://github.com/aravind-b-dev";
-  static const String linkedinUrl = "https://linkedin.com";
+  static const String linkedinUrl = "https://www.linkedin.com/in/aravind-b-3863611b6/";
 }
