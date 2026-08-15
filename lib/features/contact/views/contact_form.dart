@@ -56,7 +56,7 @@ class _ContactFormState extends State<ContactForm> {
           backgroundColor: AppColors.bgSurface,
           content: Row(
             children: const [
-              Icon(Icons.check_circle_rounded, color: AppColors.accentCyan),
+              Icon(Icons.check_circle_rounded, color: AppColors.accentIndigo),
               SizedBox(width: 12),
               Text(
                 "Message sent successfully! I'll get back to you soon.",
@@ -72,7 +72,8 @@ class _ContactFormState extends State<ContactForm> {
   @override
   Widget build(BuildContext context) {
     return GlassContainer(
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.all(24),
+      borderRadius: 14,
       child: Form(
         key: _formKey,
         child: Column(
@@ -89,7 +90,7 @@ class _ContactFormState extends State<ContactForm> {
                 return null;
               },
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             GlassInput(
               label: "YOUR EMAIL",
               hint: "name@company.com",
@@ -105,12 +106,12 @@ class _ContactFormState extends State<ContactForm> {
                 return null;
               },
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 16),
             GlassInput(
               label: "YOUR MESSAGE",
-              hint: "Describe your project or technical inquiry...",
+              hint: "Describe your project or inquiry...",
               controller: _messageController,
-              maxLines: 5,
+              maxLines: 4,
               validator: (val) {
                 if (val == null || val.trim().isEmpty) {
                   return "Please enter your message";
@@ -121,13 +122,13 @@ class _ContactFormState extends State<ContactForm> {
                 return null;
               },
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               child: _isSubmitting
                   ? const Center(
                       child: CircularProgressIndicator(
-                        color: AppColors.accentCyan,
+                        color: AppColors.accentIndigo,
                       ),
                     )
                   : GlassButton(

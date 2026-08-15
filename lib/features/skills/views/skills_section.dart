@@ -29,7 +29,7 @@ class SkillsSection extends StatelessWidget {
     return Container(
       key: navController.sectionKeys['SKILLS'],
       padding: EdgeInsets.symmetric(
-        vertical: 80,
+        vertical: 50,
         horizontal: isMobile ? 20 : (isTablet ? 40 : 80),
       ),
       child: Center(
@@ -42,24 +42,24 @@ class SkillsSection extends StatelessWidget {
               children: [
                 // Section Header
                 const GlassChip(
-                  label: "CORE COMPETENCIES",
-                  color: AppColors.accentCyan,
+                  label: "TECHNICAL SKILLS",
+                  color: AppColors.accentIndigo,
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
                 Text(
                   AppStrings.skillsTitle,
                   style: AppTypography.sectionTitle(
-                    fontSize: isMobile ? 28 : 40,
+                    fontSize: isMobile ? 24 : 34,
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
                 Text(
                   AppStrings.skillsSubtitle,
                   style: AppTypography.bodyLarge(
-                    fontSize: isMobile ? 15 : 17,
+                    fontSize: isMobile ? 14.5 : 16.0,
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
 
                 // Skill Cards Grid
                 GridView.builder(
@@ -68,9 +68,9 @@ class SkillsSection extends StatelessWidget {
                   itemCount: skillCategories.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: isMobile ? 1 : (isTablet ? 2 : 3),
-                    crossAxisSpacing: 24,
-                    mainAxisSpacing: 24,
-                    childAspectRatio: isMobile ? 0.95 : 0.85,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    childAspectRatio: isMobile ? 1.05 : 0.9,
                   ),
                   itemBuilder: (context, index) {
                     return SkillCategoryCard(category: skillCategories[index]);

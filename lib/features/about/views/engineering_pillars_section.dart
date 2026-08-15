@@ -17,42 +17,42 @@ class EngineeringPillarsSection extends StatelessWidget {
 
     final pillars = [
       _PillarItem(
-        icon: Icons.shield_moon_rounded,
+        icon: Icons.shield_outlined,
         title: "Enterprise Banking Security",
-        accentColor: AppColors.accentCyan,
+        accentColor: AppColors.accentIndigo,
         description:
-            "Implemented PII masking, SSL Pinning, biometrics authentication, encrypted SQLite databases, and strict token management compliant with banking standards.",
-        tags: ["DigiLocker", "PII Masking", "SQL Encryption", "Biometrics"],
+            "Implemented PII masking, SSL Pinning, biometrics, encrypted SQLite databases, and token handling compliant with banking security standards.",
+        tags: ["DigiLocker", "PII Masking", "SQL Encryption"],
       ),
       _PillarItem(
         icon: Icons.speed_rounded,
-        title: "High Performance & Low Latency",
-        accentColor: AppColors.accentEmerald,
-        description:
-            "Optimized state updates, lazy-loaded lists, asset caching, and reduced API round-trips for high-concurrency mobile platforms serving millions of users.",
-        tags: ["60 FPS Rendering", "Memory Optimization", "Latency Reduction"],
-      ),
-      _PillarItem(
-        icon: Icons.account_tree_rounded,
-        title: "Clean Modular Architecture",
-        accentColor: AppColors.accentPurple,
-        description:
-            "Architected scalable codebases using Clean Architecture, BLoC, MobX, and Provider patterns ensuring 100% testability, modularity, and smooth team collaboration.",
-        tags: ["Clean Architecture", "MobX", "BLoC", "TDD & Testing"],
-      ),
-      _PillarItem(
-        icon: Icons.psychology_rounded,
-        title: "Generative AI & RAG Solutions",
+        title: "Performance & Low Latency",
         accentColor: AppColors.accentBlue,
         description:
-            "Pioneered AI RAG chatbots using Python and Google Gemini LLMs for SBI YONO 2.0. Eliminating hallucinations while preserving user data privacy.",
-        tags: ["Gemini LLM", "RAG Pipeline", "Python Integration", "TCS AI Hackathon Winner"],
+            "Optimized state updates, lazy-loaded lists, asset caching, and reduced API round-trips for high-scale apps serving millions of active users.",
+        tags: ["60 FPS", "Memory Tuning", "Latency Reduction"],
+      ),
+      _PillarItem(
+        icon: Icons.account_tree_outlined,
+        title: "Clean Modular Architecture",
+        accentColor: AppColors.accentCyan,
+        description:
+            "Architected scalable codebases using Clean Architecture, BLoC, MobX, and Provider patterns ensuring testability and modular maintainability.",
+        tags: ["Clean Arch", "MobX", "BLoC", "TDD Testing"],
+      ),
+      _PillarItem(
+        icon: Icons.psychology_outlined,
+        title: "Generative AI & RAG Solutions",
+        accentColor: AppColors.accentEmerald,
+        description:
+            "Pioneered AI RAG chatbots using Python and Gemini LLM for SBI YONO 2.0. Eliminating hallucinations while preserving user data privacy.",
+        tags: ["Gemini LLM", "RAG Pipeline", "TCS AI Winner"],
       ),
     ];
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: 60,
+        vertical: 40,
         horizontal: isMobile ? 20 : (isTablet ? 40 : 80),
       ),
       child: Center(
@@ -64,24 +64,17 @@ class EngineeringPillarsSection extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const GlassChip(
-                  label: "ENGINEERING STANDARDS",
-                  color: AppColors.accentCyan,
+                  label: "CORE COMPETENCIES",
+                  color: AppColors.accentIndigo,
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
                 Text(
-                  "Core Engineering Pillars",
+                  "Engineering Pillars & Standards",
                   style: AppTypography.sectionTitle(
-                    fontSize: isMobile ? 28 : 38,
+                    fontSize: isMobile ? 24 : 34,
                   ),
                 ),
-                const SizedBox(height: 12),
-                Text(
-                  "How I design, build, and deliver high-scale Flutter applications for production.",
-                  style: AppTypography.bodyLarge(
-                    fontSize: isMobile ? 15 : 17,
-                  ),
-                ),
-                const SizedBox(height: 36),
+                const SizedBox(height: 24),
 
                 // Grid of Pillars
                 GridView.builder(
@@ -90,16 +83,15 @@ class EngineeringPillarsSection extends StatelessWidget {
                   itemCount: pillars.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: isMobile ? 1 : 2,
-                    crossAxisSpacing: 24,
-                    mainAxisSpacing: 24,
-                    childAspectRatio: isMobile ? 1.05 : 1.35,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    childAspectRatio: isMobile ? 1.2 : 1.6,
                   ),
                   itemBuilder: (context, index) {
                     final item = pillars[index];
                     return GlassContainer(
-                      padding: const EdgeInsets.all(24),
-                      borderColor: item.accentColor.withValues(alpha: 0.3),
-                      hoverBorderColor: item.accentColor,
+                      padding: const EdgeInsets.all(20),
+                      borderRadius: 14,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -107,28 +99,23 @@ class EngineeringPillarsSection extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                padding: const EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color: item.accentColor.withValues(alpha: 0.15),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: Icon(
-                                  item.icon,
-                                  color: item.accentColor,
-                                  size: 26,
-                                ),
-                              ),
-                              const SizedBox(height: 16),
-                              Text(
-                                item.title,
-                                style: AppTypography.cardTitle(fontSize: 19),
+                              Row(
+                                children: [
+                                  Icon(item.icon, color: item.accentColor, size: 22),
+                                  const SizedBox(width: 10),
+                                  Expanded(
+                                    child: Text(
+                                      item.title,
+                                      style: AppTypography.cardTitle(fontSize: 17),
+                                    ),
+                                  ),
+                                ],
                               ),
                               const SizedBox(height: 10),
                               Text(
                                 item.description,
                                 style: AppTypography.bodyStandard(
-                                  fontSize: 13.5,
+                                  fontSize: 13,
                                   color: AppColors.textSecondary,
                                 ),
                               ),

@@ -14,6 +14,8 @@ class ProjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassContainer(
+      padding: const EdgeInsets.all(20),
+      borderRadius: 14,
       onTap: () {
         showDialog(
           context: context,
@@ -27,57 +29,57 @@ class ProjectCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header Badge & Enterprise Tag
+              // Header Tag
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GlassChip(
-                    label: project.isEnterprise ? "ENTERPRISE" : "OPEN SOURCE",
+                    label: project.isEnterprise ? "ENTERPRISE" : "FEATURED PROJECT",
                     color: project.isEnterprise
-                        ? AppColors.accentCyan
-                        : AppColors.accentPurple,
+                        ? AppColors.accentIndigo
+                        : AppColors.accentBlue,
                   ),
                   const Icon(
                     Icons.north_east_rounded,
-                    color: AppColors.accentCyan,
-                    size: 20,
+                    color: AppColors.textMuted,
+                    size: 18,
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 14),
 
               // Title & Subtitle
               Text(
                 project.title,
-                style: AppTypography.cardTitle(fontSize: 22),
+                style: AppTypography.cardTitle(fontSize: 18),
               ),
-              const SizedBox(height: 6),
+              const SizedBox(height: 4),
               Text(
                 project.subtitle,
                 style: AppTypography.badgeTag(
-                  color: AppColors.textSecondary,
-                  fontSize: 12,
+                  color: AppColors.textMuted,
+                  fontSize: 11.5,
                 ),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 12),
 
               // Description
               Text(
                 project.description,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: AppTypography.bodyStandard(fontSize: 14),
+                style: AppTypography.bodyStandard(fontSize: 13.5),
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
 
-          // Bottom Tech Stack Chips
+          // Bottom Tech Tags
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Divider(color: AppColors.glassBorder),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
               Wrap(
                 spacing: 6,
                 runSpacing: 6,

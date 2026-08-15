@@ -56,6 +56,7 @@ class _GlassContainerState extends State<GlassContainer> {
       margin: widget.margin,
       decoration: BoxDecoration(
         color: effectiveBgColor,
+        gradient: AppColors.glassFillGradient,
         borderRadius: BorderRadius.circular(widget.borderRadius),
         border: Border.all(
           color: effectiveBorderColor,
@@ -64,17 +65,17 @@ class _GlassContainerState extends State<GlassContainer> {
         boxShadow: [
           if (_isHovered && widget.enableHoverEffect)
             BoxShadow(
-              color: AppColors.accentCyan.withValues(alpha: 0.15),
-              blurRadius: 20.0,
+              color: AppColors.accentIndigo.withValues(alpha: 0.2),
+              blurRadius: 24.0,
               spreadRadius: 1.0,
-              offset: const Offset(0, 4),
+              offset: const Offset(0, 8),
             )
           else
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.25),
-              blurRadius: 12.0,
+              color: Colors.black.withValues(alpha: 0.35),
+              blurRadius: 16.0,
               spreadRadius: 0.0,
-              offset: const Offset(0, 4),
+              offset: const Offset(0, 6),
             ),
         ],
       ),
@@ -105,7 +106,7 @@ class _GlassContainerState extends State<GlassContainer> {
         child: GestureDetector(
           onTap: widget.onTap,
           child: AnimatedScale(
-            scale: _isHovered && widget.enableHoverEffect ? 1.015 : 1.0,
+            scale: _isHovered && widget.enableHoverEffect ? 1.012 : 1.0,
             duration: const Duration(milliseconds: 200),
             curve: Curves.easeOut,
             child: clipWidget,

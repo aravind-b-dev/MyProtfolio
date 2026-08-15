@@ -25,7 +25,7 @@ class ContactSection extends StatelessWidget {
     return Container(
       key: navController.sectionKeys['CONTACT'],
       padding: EdgeInsets.symmetric(
-        vertical: 80,
+        vertical: 50,
         horizontal: isMobile ? 20 : (isTablet ? 40 : 80),
       ),
       child: Center(
@@ -39,30 +39,30 @@ class ContactSection extends StatelessWidget {
                 // Section Header
                 const GlassChip(
                   label: "GET IN TOUCH",
-                  color: AppColors.accentCyan,
+                  color: AppColors.accentIndigo,
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
                 Text(
                   AppStrings.contactTitle,
                   style: AppTypography.sectionTitle(
-                    fontSize: isMobile ? 28 : 40,
+                    fontSize: isMobile ? 24 : 34,
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
                 Text(
                   AppStrings.contactSubtitle,
                   style: AppTypography.bodyLarge(
-                    fontSize: isMobile ? 15 : 17,
+                    fontSize: isMobile ? 14.5 : 16.0,
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
 
                 // Responsive Layout
                 ResponsiveLayout(
                   mobile: Column(
                     children: [
                       _buildContactInfo(context),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 24),
                       ContactForm(contactService: MockContactService()),
                     ],
                   ),
@@ -73,7 +73,7 @@ class ContactSection extends StatelessWidget {
                         flex: 5,
                         child: _buildContactInfo(context),
                       ),
-                      const SizedBox(width: 40),
+                      const SizedBox(width: 32),
                       Expanded(
                         flex: 7,
                         child: ContactForm(contactService: MockContactService()),
@@ -91,49 +91,50 @@ class ContactSection extends StatelessWidget {
 
   Widget _buildContactInfo(BuildContext context) {
     return GlassContainer(
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.all(24),
+      borderRadius: 14,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Direct Communication",
-            style: AppTypography.cardTitle(fontSize: 22),
+            "Direct Contact Details",
+            style: AppTypography.cardTitle(fontSize: 18),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 16),
           _buildInfoItem(
             Icons.phone_android_rounded,
             "PHONE",
             AppStrings.phoneNumber,
             () => _launch("tel:${AppStrings.phoneNumber.replaceAll(' ', '')}"),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
           _buildInfoItem(
             Icons.email_outlined,
             "EMAIL",
             AppStrings.emailAddress,
             () => _launch("mailto:${AppStrings.emailAddress}"),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 14),
           _buildInfoItem(
             Icons.location_on_outlined,
             "LOCATION",
             AppStrings.location,
             null,
           ),
-          const SizedBox(height: 24),
-          const Divider(color: AppColors.glassBorder),
           const SizedBox(height: 20),
+          const Divider(color: AppColors.glassBorder),
+          const SizedBox(height: 16),
           Text(
             "Professional Networks",
             style: AppTypography.badgeTag(color: AppColors.textMuted),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
           Row(
             children: [
               _buildSocialButton("GitHub", Icons.code_rounded, () {
                 _launch(AppStrings.githubUrl);
               }),
-              const SizedBox(width: 12),
+              const SizedBox(width: 10),
               _buildSocialButton("LinkedIn", Icons.work_outline_rounded, () {
                 _launch(AppStrings.linkedinUrl);
               }),
@@ -153,15 +154,15 @@ class ContactSection extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              width: 40,
-              height: 40,
+              width: 36,
+              height: 36,
               decoration: BoxDecoration(
-                color: AppColors.accentCyan.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(10),
+                color: AppColors.accentIndigo.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
               ),
-              child: Icon(icon, color: AppColors.accentCyan, size: 20),
+              child: Icon(icon, color: AppColors.accentIndigo, size: 18),
             ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 14),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -175,7 +176,7 @@ class ContactSection extends StatelessWidget {
                 Text(
                   value,
                   style: AppTypography.bodyStandard(
-                    fontSize: 15,
+                    fontSize: 14,
                     color: AppColors.textPrimary,
                   ),
                 ),
@@ -193,10 +194,10 @@ class ContactSection extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.glassBase,
-            borderRadius: BorderRadius.circular(10),
+            color: AppColors.bgDark,
+            borderRadius: BorderRadius.circular(8),
             border: Border.all(
               color: AppColors.glassBorder,
               width: 1.0,
@@ -205,11 +206,11 @@ class ContactSection extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, size: 16, color: AppColors.accentCyan),
-              const SizedBox(width: 8),
+              Icon(icon, size: 15, color: AppColors.accentIndigo),
+              const SizedBox(width: 6),
               Text(
                 label,
-                style: AppTypography.badgeTag(color: AppColors.textPrimary),
+                style: AppTypography.badgeTag(color: AppColors.textPrimary, fontSize: 11.5),
               ),
             ],
           ),

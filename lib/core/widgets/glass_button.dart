@@ -18,7 +18,7 @@ class GlassButton extends StatefulWidget {
     this.icon,
     this.isPrimary = true,
     this.width,
-    this.padding = const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+    this.padding = const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
   });
 
   @override
@@ -42,13 +42,14 @@ class _GlassButtonState extends State<GlassButton> {
             width: widget.width,
             padding: widget.padding,
             decoration: BoxDecoration(
-              gradient: AppColors.primaryGradient,
-              borderRadius: BorderRadius.circular(12),
+              color: _isHovered
+                  ? AppColors.accentIndigo.withValues(alpha: 0.9)
+                  : AppColors.accentIndigo,
+              borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.accentCyan.withValues(alpha: _isHovered ? 0.5 : 0.25),
-                  blurRadius: _isHovered ? 20 : 12,
-                  spreadRadius: _isHovered ? 2 : 0,
+                  color: AppColors.accentIndigo.withValues(alpha: _isHovered ? 0.4 : 0.2),
+                  blurRadius: _isHovered ? 14 : 8,
                   offset: const Offset(0, 4),
                 ),
               ],
@@ -59,20 +60,17 @@ class _GlassButtonState extends State<GlassButton> {
               children: [
                 Text(
                   widget.text,
-                  style: AppTypography.navLink(
-                    color: Colors.black,
-                    isSelected: true,
-                  ).copyWith(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: AppTypography.badgeTag(
+                    color: Colors.white,
+                    fontSize: 13.5,
+                  ).copyWith(fontWeight: FontWeight.w600),
                 ),
                 if (widget.icon != null) ...[
                   const SizedBox(width: 8),
                   Icon(
                     widget.icon,
-                    size: 18,
-                    color: Colors.black,
+                    size: 16,
+                    color: Colors.white,
                   ),
                 ],
               ],
@@ -82,7 +80,7 @@ class _GlassButtonState extends State<GlassButton> {
       );
     }
 
-    // Glass Secondary Button
+    // Secondary Outline Glass Button
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
@@ -90,21 +88,21 @@ class _GlassButtonState extends State<GlassButton> {
       child: GestureDetector(
         onTap: widget.onPressed,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(8),
           child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               width: widget.width,
               padding: widget.padding,
               decoration: BoxDecoration(
                 color: _isHovered
-                    ? AppColors.accentCyan.withValues(alpha: 0.1)
-                    : AppColors.glassBase,
-                borderRadius: BorderRadius.circular(12),
+                    ? AppColors.accentIndigo.withValues(alpha: 0.1)
+                    : AppColors.bgSurface.withValues(alpha: 0.6),
+                borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: _isHovered ? AppColors.accentCyan : AppColors.glassBorder,
-                  width: 1.2,
+                  color: _isHovered ? AppColors.accentIndigo : AppColors.glassBorder,
+                  width: 1.0,
                 ),
               ),
               child: Row(
@@ -113,16 +111,17 @@ class _GlassButtonState extends State<GlassButton> {
                 children: [
                   Text(
                     widget.text,
-                    style: AppTypography.navLink(
-                      color: _isHovered ? AppColors.accentCyan : AppColors.textPrimary,
+                    style: AppTypography.badgeTag(
+                      color: _isHovered ? AppColors.accentIndigo : AppColors.textPrimary,
+                      fontSize: 13.5,
                     ),
                   ),
                   if (widget.icon != null) ...[
                     const SizedBox(width: 8),
                     Icon(
                       widget.icon,
-                      size: 18,
-                      color: _isHovered ? AppColors.accentCyan : AppColors.textPrimary,
+                      size: 16,
+                      color: _isHovered ? AppColors.accentIndigo : AppColors.textPrimary,
                     ),
                   ],
                 ],

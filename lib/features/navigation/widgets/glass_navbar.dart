@@ -21,27 +21,27 @@ class GlassNavbar extends StatelessWidget {
     final isCompact = width < 900;
 
     return Positioned(
-      top: 20,
+      top: 16,
       left: isCompact ? 16 : 40,
       right: isCompact ? 16 : 40,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(12),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
+          filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             decoration: BoxDecoration(
-              color: AppColors.glassBase,
-              borderRadius: BorderRadius.circular(20),
+              color: AppColors.bgSurface.withValues(alpha: 0.8),
+              borderRadius: BorderRadius.circular(12),
               border: Border.all(
                 color: AppColors.glassBorder,
                 width: 1.0,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.3),
-                  blurRadius: 20,
-                  offset: const Offset(0, 8),
+                  color: Colors.black.withValues(alpha: 0.25),
+                  blurRadius: 16,
+                  offset: const Offset(0, 4),
                 ),
               ],
             ),
@@ -57,40 +57,34 @@ class GlassNavbar extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
-                          width: 36,
-                          height: 36,
+                          width: 32,
+                          height: 32,
                           decoration: BoxDecoration(
-                            gradient: AppColors.primaryGradient,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: AppColors.accentCyan.withValues(alpha: 0.4),
-                                blurRadius: 10,
-                              ),
-                            ],
+                            color: AppColors.accentIndigo,
+                            borderRadius: BorderRadius.circular(8),
                           ),
                           child: const Center(
                             child: Icon(
-                              Icons.code_rounded,
-                              color: Colors.black,
-                              size: 22,
+                              Icons.flutter_dash_rounded,
+                              color: Colors.white,
+                              size: 20,
                             ),
                           ),
                         ),
-                        const SizedBox(width: 12),
+                        const SizedBox(width: 10),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
                               AppStrings.developerName,
-                              style: AppTypography.cardTitle(fontSize: 18),
+                              style: AppTypography.cardTitle(fontSize: 16),
                             ),
                             Text(
                               AppStrings.developerTitle,
                               style: AppTypography.badgeTag(
-                                fontSize: 10,
-                                color: AppColors.accentCyan,
+                                fontSize: 9.5,
+                                color: AppColors.accentIndigo,
                               ),
                             ),
                           ],
@@ -100,14 +94,14 @@ class GlassNavbar extends StatelessWidget {
                   ),
                 ),
 
-                // Compact Menu Button or Full Navigation Bar
+                // Navigation Links
                 if (isCompact)
                   IconButton(
                     onPressed: onOpenMobileMenu,
                     icon: const Icon(
                       Icons.menu_rounded,
-                      color: AppColors.accentCyan,
-                      size: 28,
+                      color: AppColors.textPrimary,
+                      size: 24,
                     ),
                   )
                 else
@@ -126,7 +120,7 @@ class GlassNavbar extends StatelessWidget {
                           final isSelected =
                               navController.activeSection == section;
                           return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 14),
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
                             child: MouseRegion(
                               cursor: SystemMouseCursors.click,
                               child: GestureDetector(
@@ -138,16 +132,18 @@ class GlassNavbar extends StatelessWidget {
                                       section,
                                       style: AppTypography.navLink(
                                         isSelected: isSelected,
+                                        color: isSelected
+                                            ? AppColors.accentIndigo
+                                            : AppColors.textSecondary,
                                       ),
                                     ),
                                     const SizedBox(height: 4),
                                     AnimatedContainer(
-                                      duration: const Duration(milliseconds: 250),
-                                      curve: Curves.easeOut,
+                                      duration: const Duration(milliseconds: 200),
                                       height: 2,
-                                      width: isSelected ? 20 : 0,
+                                      width: isSelected ? 16 : 0,
                                       decoration: BoxDecoration(
-                                        gradient: AppColors.primaryGradient,
+                                        color: AppColors.accentIndigo,
                                         borderRadius: BorderRadius.circular(2),
                                       ),
                                     ),

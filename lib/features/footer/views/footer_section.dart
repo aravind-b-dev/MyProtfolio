@@ -44,7 +44,7 @@ class FooterSection extends StatelessWidget {
                   Text(
                     AppStrings.developerTitle,
                     style: AppTypography.badgeTag(
-                      color: AppColors.accentCyan,
+                      color: AppColors.accentIndigo,
                       fontSize: 11,
                     ),
                   ),

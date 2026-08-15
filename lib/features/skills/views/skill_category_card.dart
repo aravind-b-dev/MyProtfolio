@@ -13,6 +13,8 @@ class SkillCategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GlassContainer(
+      padding: const EdgeInsets.all(18),
+      borderRadius: 14,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -20,40 +22,40 @@ class SkillCategoryCard extends StatelessWidget {
           Row(
             children: [
               Container(
-                width: 42,
-                height: 42,
+                width: 36,
+                height: 36,
                 decoration: BoxDecoration(
-                  color: AppColors.accentCyan.withValues(alpha: 0.12),
-                  borderRadius: BorderRadius.circular(10),
+                  color: AppColors.accentIndigo.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: AppColors.accentCyan.withValues(alpha: 0.3),
+                    color: AppColors.accentIndigo.withValues(alpha: 0.3),
                   ),
                 ),
                 child: Center(
                   child: Icon(
                     category.icon,
-                    color: AppColors.accentCyan,
-                    size: 22,
+                    color: AppColors.accentIndigo,
+                    size: 18,
                   ),
                 ),
               ),
-              const SizedBox(width: 14),
+              const SizedBox(width: 12),
               Expanded(
                 child: Text(
                   category.categoryName,
-                  style: AppTypography.cardTitle(fontSize: 18),
+                  style: AppTypography.cardTitle(fontSize: 16),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          const Divider(color: AppColors.glassBorder),
           const SizedBox(height: 14),
+          const Divider(color: AppColors.glassBorder),
+          const SizedBox(height: 10),
 
           // Skill List Items with Badges
           ...category.skills.map((skill) {
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
+              padding: const EdgeInsets.symmetric(vertical: 6),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -61,7 +63,7 @@ class SkillCategoryCard extends StatelessWidget {
                     child: Text(
                       skill.name,
                       style: AppTypography.bodyStandard(
-                        fontSize: 14,
+                        fontSize: 13.5,
                         color: AppColors.textPrimary,
                       ),
                     ),
@@ -82,13 +84,13 @@ class SkillCategoryCard extends StatelessWidget {
   Color _getColorForLevel(SkillLevel level) {
     switch (level) {
       case SkillLevel.expert:
-        return AppColors.accentCyan;
+        return AppColors.accentIndigo;
       case SkillLevel.advanced:
         return AppColors.accentBlue;
       case SkillLevel.strong:
-        return AppColors.accentPurple;
+        return AppColors.accentCyan;
       case SkillLevel.workingKnowledge:
-        return AppColors.textSecondary;
+        return AppColors.textMuted;
     }
   }
 }

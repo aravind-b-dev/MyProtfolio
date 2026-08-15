@@ -37,58 +37,53 @@ class ExperienceTimeline extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                     decoration: BoxDecoration(
-                      gradient: AppColors.primaryGradient,
-                      borderRadius: BorderRadius.circular(20),
+                      color: AppColors.accentIndigo,
+                      borderRadius: BorderRadius.circular(14),
                     ),
                     child: Text(
                       exp.year,
                       style: AppTypography.badgeTag(
-                        color: Colors.black,
-                        fontSize: 12,
-                      ).copyWith(fontWeight: FontWeight.w700),
+                        color: Colors.white,
+                        fontSize: 11,
+                      ).copyWith(fontWeight: FontWeight.w600),
                     ),
                   ),
                   if (!isLast)
                     Expanded(
                       child: Container(
                         height: 2,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              AppColors.accentCyan,
-                              AppColors.accentPurple.withValues(alpha: 0.3),
-                            ],
-                          ),
-                        ),
+                        color: AppColors.glassBorder,
                       ),
                     ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
 
-              // Experience Glass Card
+              // Experience Card
               GlassContainer(
-                margin: const EdgeInsets.only(right: 16),
+                margin: const EdgeInsets.only(right: 12),
+                padding: const EdgeInsets.all(16),
+                borderRadius: 14,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       exp.title,
-                      style: AppTypography.cardTitle(fontSize: 18),
+                      style: AppTypography.cardTitle(fontSize: 16),
                     ),
-                    const SizedBox(height: 4),
+                    const SizedBox(height: 2),
                     Text(
                       exp.company,
-                      style: AppTypography.badgeTag(color: AppColors.accentCyan),
+                      style: AppTypography.badgeTag(color: AppColors.accentIndigo, fontSize: 11.5),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 10),
                     Text(
                       exp.description,
-                      style: AppTypography.bodyStandard(fontSize: 14),
+                      style: AppTypography.bodyStandard(fontSize: 13),
                     ),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: 10),
                     ...exp.highlights.map(
                       (h) => Padding(
                         padding: const EdgeInsets.only(bottom: 4),
@@ -97,13 +92,13 @@ class ExperienceTimeline extends StatelessWidget {
                           children: [
                             const Text(
                               "• ",
-                              style: TextStyle(color: AppColors.accentCyan),
+                              style: TextStyle(color: AppColors.accentIndigo),
                             ),
                             Expanded(
                               child: Text(
                                 h,
                                 style: AppTypography.bodyStandard(
-                                  fontSize: 13,
+                                  fontSize: 12.5,
                                   color: AppColors.textSecondary,
                                 ),
                               ),
@@ -126,7 +121,7 @@ class ExperienceTimeline extends StatelessWidget {
     return Column(
       children: experiences.map((exp) {
         return Padding(
-          padding: const EdgeInsets.only(bottom: 24),
+          padding: const EdgeInsets.only(bottom: 16),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -134,52 +129,48 @@ class ExperienceTimeline extends StatelessWidget {
               Column(
                 children: [
                   Container(
-                    width: 14,
-                    height: 14,
+                    width: 12,
+                    height: 12,
                     decoration: const BoxDecoration(
-                      color: AppColors.accentCyan,
+                      color: AppColors.accentIndigo,
                       shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.accentCyan,
-                          blurRadius: 8,
-                        ),
-                      ],
                     ),
                   ),
                   Container(
                     width: 2,
-                    height: 180,
+                    height: 140,
                     color: AppColors.glassBorder,
                   ),
                 ],
               ),
-              const SizedBox(width: 16),
+              const SizedBox(width: 14),
 
               // Content Card
               Expanded(
                 child: GlassContainer(
+                  padding: const EdgeInsets.all(16),
+                  borderRadius: 14,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       GlassChip(
                         label: exp.year,
-                        color: AppColors.accentCyan,
+                        color: AppColors.accentIndigo,
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       Text(
                         exp.title,
-                        style: AppTypography.cardTitle(fontSize: 18),
+                        style: AppTypography.cardTitle(fontSize: 16),
                       ),
-                      const SizedBox(height: 4),
+                      const SizedBox(height: 2),
                       Text(
                         exp.company,
-                        style: AppTypography.badgeTag(color: AppColors.accentPurple),
+                        style: AppTypography.badgeTag(color: AppColors.accentIndigo, fontSize: 11.5),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 8),
                       Text(
                         exp.description,
-                        style: AppTypography.bodyStandard(fontSize: 14),
+                        style: AppTypography.bodyStandard(fontSize: 13),
                       ),
                     ],
                   ),

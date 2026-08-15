@@ -29,7 +29,7 @@ class WorksSection extends StatelessWidget {
     return Container(
       key: navController.sectionKeys['WORKS'],
       padding: EdgeInsets.symmetric(
-        vertical: 80,
+        vertical: 50,
         horizontal: isMobile ? 20 : (isTablet ? 40 : 80),
       ),
       child: Center(
@@ -42,24 +42,24 @@ class WorksSection extends StatelessWidget {
               children: [
                 // Section Header
                 const GlassChip(
-                  label: "FEATURED WORK & ARCHITECTURE",
-                  color: AppColors.accentCyan,
+                  label: "FEATURED PROJECTS",
+                  color: AppColors.accentIndigo,
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
                 Text(
                   AppStrings.worksTitle,
                   style: AppTypography.sectionTitle(
-                    fontSize: isMobile ? 28 : 40,
+                    fontSize: isMobile ? 24 : 34,
                   ),
                 ),
-                const SizedBox(height: 12),
+                const SizedBox(height: 10),
                 Text(
                   AppStrings.worksSubtitle,
                   style: AppTypography.bodyLarge(
-                    fontSize: isMobile ? 15 : 17,
+                    fontSize: isMobile ? 14.5 : 16.0,
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
 
                 // Responsive Grid Layout
                 GridView.builder(
@@ -68,9 +68,9 @@ class WorksSection extends StatelessWidget {
                   itemCount: projects.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: isMobile ? 1 : (isTablet ? 2 : 3),
-                    crossAxisSpacing: 24,
-                    mainAxisSpacing: 24,
-                    childAspectRatio: isMobile ? 1.05 : 0.88,
+                    crossAxisSpacing: 18,
+                    mainAxisSpacing: 18,
+                    childAspectRatio: isMobile ? 1.05 : 0.95,
                   ),
                   itemBuilder: (context, index) {
                     return ProjectCard(project: projects[index]);
