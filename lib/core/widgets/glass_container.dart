@@ -65,7 +65,7 @@ class _GlassContainerState extends State<GlassContainer> {
         boxShadow: [
           if (_isHovered && widget.enableHoverEffect)
             BoxShadow(
-              color: AppColors.accentIndigo.withValues(alpha: 0.2),
+              color: AppColors.accentPurple.withValues(alpha: 0.25),
               blurRadius: 24.0,
               spreadRadius: 1.0,
               offset: const Offset(0, 8),

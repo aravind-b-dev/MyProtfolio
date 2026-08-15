@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
-import '../../../core/constants/app_typography.dart';
 import '../../../core/responsive/breakpoints.dart';
 import '../../../core/responsive/responsive_builder.dart';
+import '../../../core/utils/cv_download_helper.dart';
 import '../../../core/widgets/glass_button.dart';
 import '../../../core/widgets/scroll_reveal.dart';
 import '../../navigation/nav_controller.dart';
@@ -22,14 +22,11 @@ class HomeSection extends StatelessWidget {
 
     return Container(
       key: navController.sectionKeys['HOME'],
-      constraints: BoxConstraints(
-        minHeight: MediaQuery.of(context).size.height * 0.85,
-      ),
       padding: EdgeInsets.only(
-        top: isMobile ? 80 : 120,
-        bottom: 40,
-        left: isMobile ? 20 : (isTablet ? 40 : 80),
-        right: isMobile ? 20 : (isTablet ? 40 : 80),
+        top: isMobile ? 90 : 100,
+        bottom: 30,
+        left: isMobile ? 12 : (isTablet ? 24 : 40),
+        right: isMobile ? 12 : (isTablet ? 24 : 40),
       ),
       child: Center(
         child: Container(
@@ -40,11 +37,65 @@ class HomeSection extends StatelessWidget {
             keyName: 'home_section',
             child: Column(
               children: [
-                ResponsiveLayout(
-                  mobile: _buildMobileLayout(context),
-                  desktop: _buildDesktopLayout(context),
+                // Signature Hero Purple Card Container
+                Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    gradient: AppColors.heroCardGradient,
+                    borderRadius: BorderRadius.circular(isMobile ? 20 : 32),
+                    border: Border.all(
+                      color: Colors.white.withValues(alpha: 0.12),
+                      width: 1.2,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: AppColors.accentPurple.withValues(alpha: 0.25),
+                        blurRadius: 36,
+                        spreadRadius: 2,
+                        offset: const Offset(0, 12),
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      // Subtle Background Radial Lighting
+                      Positioned(
+                        right: -50,
+                        bottom: -50,
+                        child: Container(
+                          width: 450,
+                          height: 450,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: RadialGradient(
+                              colors: [
+                                AppColors.accentCyan.withValues(alpha: 0.20),
+                                AppColors.accentBlue.withValues(alpha: 0.10),
+                                Colors.transparent,
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // Main Hero Content Layout
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: isMobile ? 60 : 85,
+                          bottom: isMobile ? 40 : 60,
+                          left: isMobile ? 24 : 60,
+                          right: isMobile ? 24 : 40,
+                        ),
+                        child: ResponsiveLayout(
+                          mobile: _buildMobileLayout(context),
+                          desktop: _buildDesktopLayout(context),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: 40),
+
+                const SizedBox(height: 36),
                 const TechTickerBar(),
               ],
             ),
@@ -58,13 +109,13 @@ class HomeSection extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // Left Column: Professional Intro Text & CTAs
+        // Left Column: Headline, Bio & Pill CTA
         Expanded(
           flex: 6,
           child: _buildHeroContent(context),
         ),
-        const SizedBox(width: 40),
-        // Right Column: Clean Profile Avatar
+        const SizedBox(width: 32),
+        // Right Column: Cutout Profile Photo against Violet Aura
         const Expanded(
           flex: 5,
           child: Center(child: HeroProfileFrame()),
@@ -77,9 +128,9 @@ class HomeSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Center(child: HeroProfileFrame()),
-        const SizedBox(height: 32),
         _buildHeroContent(context),
+        const SizedBox(height: 36),
+        const Center(child: HeroProfileFrame()),
       ],
     );
   }
@@ -91,87 +142,69 @@ class HomeSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Role & Experience Badge
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          decoration: BoxDecoration(
-            color: AppColors.accentIndigo.withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: AppColors.accentIndigo.withValues(alpha: 0.3),
-              width: 1.0,
-            ),
-          ),
-          child: Text(
-            "${AppStrings.developerTitle.toUpperCase()} • ${AppStrings.yearsOfExperience}",
-            style: AppTypography.badgeTag(
-              color: AppColors.accentIndigo,
-              fontSize: 11,
-            ),
-          ),
-        ),
-        const SizedBox(height: 16),
-
-        // Name Header
+        // Title: Hi, I'm Aravind
         Text(
-          AppStrings.developerName,
-          style: AppTypography.heroTitle(
-            fontSize: isMobile ? 36 : 52,
-            color: AppColors.textPrimary,
+          "Hi, I'm ${AppStrings.developerName.split(' ').first}",
+          style: TextStyle(
+            fontFamily: 'Inter',
+            fontSize: isMobile ? 38 : 54,
+            fontWeight: FontWeight.w800,
+            color: Colors.white,
+            height: 1.1,
+            letterSpacing: -0.5,
           ),
         ),
         const SizedBox(height: 8),
 
-        // Tagline / Headline
-        Text(
-          "Building Scalable Enterprise Mobile & Web Platforms",
-          style: AppTypography.sectionTitle(
-            fontSize: isMobile ? 20 : 26,
-            color: AppColors.accentIndigo,
+        // Subhead with Gradient Shader: Senior Flutter Developer.
+        ShaderMask(
+          shaderCallback: (bounds) => AppColors.textGradient.createShader(
+            Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+          ),
+          child: Text(
+            "${AppStrings.developerTitle}.",
+            style: TextStyle(
+              fontFamily: 'Inter',
+              fontSize: isMobile ? 24 : 36,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+              height: 1.25,
+            ),
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 20),
 
-        // Concise Bio Summary
+        // Bio paragraph matching the reference style
         Text(
-          AppStrings.heroSubhead,
-          style: AppTypography.bodyLarge(
-            fontSize: isMobile ? 14.5 : 16.5,
-            color: AppColors.textSecondary,
+          "A self-taught Flutter developer with over ${AppStrings.yearsOfExperience} of experience, I build responsive and user-friendly websites & apps. I focus on clean code and efficient design, ensuring seamless interactions that align with both user expectations and business objectives.",
+          style: TextStyle(
+            fontFamily: 'Inter',
+            fontSize: isMobile ? 14.5 : 16.0,
+            fontWeight: FontWeight.w400,
+            color: const Color(0xFFCBD5E1),
+            height: 1.6,
           ),
         ),
-        const SizedBox(height: 28),
+        const SizedBox(height: 32),
 
-        // Action CTAs
+        // Action CTAs - Contact & Download CV
         Wrap(
-          spacing: 12,
-          runSpacing: 12,
+          spacing: 16,
+          runSpacing: 16,
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
-            ElevatedButton.icon(
+            GlassButton(
+              text: "Contact",
+              icon: Icons.arrow_forward_rounded,
+              padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
               onPressed: () => navController.scrollToSection('CONTACT'),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.accentIndigo,
-                foregroundColor: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                elevation: 4,
-              ),
-              icon: const Icon(Icons.mail_outline_rounded, size: 18),
-              label: Text(
-                "Get in Touch",
-                style: AppTypography.badgeTag(
-                  color: Colors.white,
-                  fontSize: 13.5,
-                ).copyWith(fontWeight: FontWeight.w600),
-              ),
             ),
             GlassButton(
-              text: AppStrings.viewMyWork,
-              icon: Icons.arrow_downward_rounded,
+              text: "Download CV",
+              icon: Icons.download_rounded,
               isPrimary: false,
-              onPressed: () => navController.scrollToSection('WORKS'),
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+              onPressed: CvDownloadHelper.downloadCV,
             ),
           ],
         ),
@@ -179,3 +212,4 @@ class HomeSection extends StatelessWidget {
     );
   }
 }
+

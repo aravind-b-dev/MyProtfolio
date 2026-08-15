@@ -11,98 +11,118 @@ class HeroProfileFrame extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final isSmall = size.width < 600;
-    final frameSize = isSmall ? 280.0 : 360.0;
-    final imageSize = isSmall ? 240.0 : 310.0;
+    final frameWidth = isSmall ? 260.0 : 350.0;
+    final frameHeight = isSmall ? 310.0 : 420.0;
 
     return Center(
       child: Stack(
         alignment: Alignment.center,
         clipBehavior: Clip.none,
         children: [
-          // Ambient Radial Light Glow Behind Profile
-          Container(
-            width: frameSize + 40,
-            height: frameSize + 40,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.accentIndigo.withValues(alpha: 0.25),
-                  blurRadius: 50,
-                  spreadRadius: 10,
-                ),
-                BoxShadow(
-                  color: AppColors.accentCyan.withValues(alpha: 0.15),
-                  blurRadius: 60,
-                  spreadRadius: 15,
-                ),
-              ],
+          // Glowing Backdrop Lighting behind Portrait
+          Positioned(
+            child: Container(
+              width: frameWidth * 0.9,
+              height: frameHeight * 0.9,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(frameWidth / 2),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.accentPurple.withValues(alpha: 0.35),
+                    blurRadius: 70,
+                    spreadRadius: 20,
+                  ),
+                  BoxShadow(
+                    color: AppColors.accentCyan.withValues(alpha: 0.25),
+                    blurRadius: 60,
+                    spreadRadius: 10,
+                  ),
+                ],
+              ),
             ),
           ),
 
-          // Outer Frosted Glass Outer Container (Layer 1)
-          ClipRRect(
-            borderRadius: BorderRadius.circular(frameSize / 2),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
-              child: Container(
-                width: frameSize,
-                height: frameSize,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.glassBase,
-                  gradient: AppColors.glassFillGradient,
-                  border: Border.all(
-                    color: AppColors.glassBorderHover,
-                    width: 1.5,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.5),
-                      blurRadius: 24,
-                      offset: const Offset(0, 10),
+          // Profile Image Frame
+          Container(
+            width: frameWidth,
+            height: frameHeight,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.accentPurple.withValues(alpha: 0.3),
+                  AppColors.accentCyan.withValues(alpha: 0.1),
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+              child: Stack(
+                children: [
+                  // Subtle inner radial glow
+                  Positioned.fill(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: RadialGradient(
+                          colors: [
+                            AppColors.accentPurple.withValues(alpha: 0.15),
+                            Colors.transparent,
+                          ],
+                          radius: 0.8,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
-                child: Container(
-                  padding: const EdgeInsets.all(4),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: AppColors.primaryGradient,
                   ),
-                  child: ClipOval(
+
+                  // Main Profile Image
+                  Center(
                     child: Image.asset(
                       'assets/images/profile.png',
-                      width: imageSize,
-                      height: imageSize,
+                      width: frameWidth,
+                      height: frameHeight,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) => Container(
                         color: AppColors.bgSurface,
                         child: const Icon(
                           Icons.person_rounded,
-                          size: 90,
-                          color: AppColors.accentIndigo,
+                          size: 100,
+                          color: AppColors.accentPurple,
                         ),
                       ),
                     ),
                   ),
-                ),
+
+                  // Inner Subtle Border
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(24),
+                      border: Border.all(
+                        color: Colors.white.withValues(alpha: 0.15),
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
 
-          // Layer 2: Glass Experience Pill Badge Floating at Bottom
+          // Experience Glass Pill floating overlay
           Positioned(
-            bottom: -15,
+            bottom: -16,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
                   decoration: BoxDecoration(
-                    color: AppColors.bgSurface.withValues(alpha: 0.85),
+                    color: AppColors.bgDark.withValues(alpha: 0.85),
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(
                       color: AppColors.glassBorderHover,
@@ -110,7 +130,7 @@ class HeroProfileFrame extends StatelessWidget {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: AppColors.accentIndigo.withValues(alpha: 0.3),
+                        color: AppColors.accentPurple.withValues(alpha: 0.3),
                         blurRadius: 16,
                         offset: const Offset(0, 4),
                       ),

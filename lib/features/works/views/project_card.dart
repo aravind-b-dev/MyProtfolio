@@ -36,8 +36,8 @@ class ProjectCard extends StatelessWidget {
                   GlassChip(
                     label: project.isEnterprise ? "ENTERPRISE" : "FEATURED PROJECT",
                     color: project.isEnterprise
-                        ? AppColors.accentIndigo
-                        : AppColors.accentBlue,
+                        ? AppColors.accentPurple
+                        : AppColors.accentCyan,
                   ),
                   const Icon(
                     Icons.north_east_rounded,

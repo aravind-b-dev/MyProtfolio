@@ -42,15 +42,24 @@ class _GlassButtonState extends State<GlassButton> {
             width: widget.width,
             padding: widget.padding,
             decoration: BoxDecoration(
-              color: _isHovered
-                  ? AppColors.accentIndigo.withValues(alpha: 0.9)
-                  : AppColors.accentIndigo,
-              borderRadius: BorderRadius.circular(8),
+              gradient: widget.isPrimary ? AppColors.buttonGradient : null,
+              color: widget.isPrimary
+                  ? null
+                  : (_isHovered
+                      ? AppColors.accentPurple.withValues(alpha: 0.15)
+                      : AppColors.glassCardFill),
+              borderRadius: BorderRadius.circular(30),
+              border: widget.isPrimary
+                  ? null
+                  : Border.all(
+                      color: _isHovered ? AppColors.accentPurple : AppColors.glassBorder,
+                      width: 1.0,
+                    ),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.accentIndigo.withValues(alpha: _isHovered ? 0.4 : 0.2),
-                  blurRadius: _isHovered ? 14 : 8,
-                  offset: const Offset(0, 4),
+                  color: AppColors.accentIndigo.withValues(alpha: _isHovered ? 0.25 : 0.15),
+                  blurRadius: _isHovered ? 10 : 4,
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),

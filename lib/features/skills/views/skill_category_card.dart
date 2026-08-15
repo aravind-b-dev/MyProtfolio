@@ -25,16 +25,16 @@ class SkillCategoryCard extends StatelessWidget {
                 width: 36,
                 height: 36,
                 decoration: BoxDecoration(
-                  color: AppColors.accentIndigo.withValues(alpha: 0.1),
+                  color: AppColors.accentPurple.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8),
                   border: Border.all(
-                    color: AppColors.accentIndigo.withValues(alpha: 0.3),
+                    color: AppColors.accentPurple.withValues(alpha: 0.3),
                   ),
                 ),
                 child: Center(
                   child: Icon(
                     category.icon,
-                    color: AppColors.accentIndigo,
+                    color: AppColors.accentPurple,
                     size: 18,
                   ),
                 ),
@@ -84,9 +84,9 @@ class SkillCategoryCard extends StatelessWidget {
   Color _getColorForLevel(SkillLevel level) {
     switch (level) {
       case SkillLevel.expert:
-        return AppColors.accentIndigo;
+        return AppColors.accentPurple;
       case SkillLevel.advanced:
-        return AppColors.accentBlue;
+        return AppColors.accentPink;
       case SkillLevel.strong:
         return AppColors.accentCyan;
       case SkillLevel.workingKnowledge:

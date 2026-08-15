@@ -43,7 +43,7 @@ class WorksSection extends StatelessWidget {
                 // Section Header
                 const GlassChip(
                   label: "FEATURED PROJECTS",
-                  color: AppColors.accentIndigo,
+                  color: AppColors.accentPurple,
                 ),
                 const SizedBox(height: 10),
                 Text(

@@ -43,7 +43,7 @@ class SkillsSection extends StatelessWidget {
                 // Section Header
                 const GlassChip(
                   label: "TECHNICAL SKILLS",
-                  color: AppColors.accentIndigo,
+                  color: AppColors.accentPurple,
                 ),
                 const SizedBox(height: 10),
                 Text(

@@ -13,19 +13,19 @@ class FuturisticBackground extends StatelessWidget {
         // Base obsidian dark background
         Container(color: AppColors.bgDark),
 
-        // Radial Ambient Light Blur - Top Right (Indigo Glow)
+        // Radial Ambient Light Blur - Top Center/Right (Purple & Magenta Glow)
         Positioned(
-          top: -150,
-          right: -150,
+          top: -180,
+          right: -100,
           child: Container(
-            width: 700,
-            height: 700,
+            width: 800,
+            height: 800,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: RadialGradient(
                 colors: [
-                  AppColors.accentIndigo.withValues(alpha: 0.14),
-                  AppColors.accentBlue.withValues(alpha: 0.05),
+                  AppColors.accentPurple.withValues(alpha: 0.22),
+                  AppColors.accentPink.withValues(alpha: 0.12),
                   Colors.transparent,
                 ],
                 stops: const [0.0, 0.45, 1.0],
@@ -34,21 +34,22 @@ class FuturisticBackground extends StatelessWidget {
           ),
         ),
 
-        // Radial Ambient Light Blur - Middle Left (Cyan Glow)
+        // Radial Ambient Light Blur - Middle Left (Cyan & Violet Glow)
         Positioned(
           top: 350,
-          left: -180,
+          left: -200,
           child: Container(
-            width: 600,
-            height: 600,
+            width: 700,
+            height: 700,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               gradient: RadialGradient(
                 colors: [
-                  AppColors.accentCyan.withValues(alpha: 0.10),
+                  AppColors.accentCyan.withValues(alpha: 0.14),
+                  AppColors.accentIndigo.withValues(alpha: 0.08),
                   Colors.transparent,
                 ],
-                stops: const [0.0, 1.0],
+                stops: const [0.0, 0.5, 1.0],
               ),
             ),
           ),

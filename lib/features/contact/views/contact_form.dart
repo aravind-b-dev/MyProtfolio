@@ -128,7 +128,7 @@ class _ContactFormState extends State<ContactForm> {
               child: _isSubmitting
                   ? const Center(
                       child: CircularProgressIndicator(
-                        color: AppColors.accentIndigo,
+                        color: AppColors.accentPurple,
                       ),
                     )
                   : GlassButton(

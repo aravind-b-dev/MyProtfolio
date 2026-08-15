@@ -3,6 +3,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_typography.dart';
+import '../../../core/utils/cv_download_helper.dart';
 import '../../../core/responsive/breakpoints.dart';
 import '../../../core/responsive/responsive_builder.dart';
 import '../../../core/widgets/glass_chip.dart';
@@ -39,7 +40,7 @@ class ContactSection extends StatelessWidget {
                 // Section Header
                 const GlassChip(
                   label: "GET IN TOUCH",
-                  color: AppColors.accentIndigo,
+                  color: AppColors.accentPurple,
                 ),
                 const SizedBox(height: 10),
                 Text(
@@ -129,14 +130,18 @@ class ContactSection extends StatelessWidget {
             style: AppTypography.badgeTag(color: AppColors.textMuted),
           ),
           const SizedBox(height: 12),
-          Row(
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
             children: [
               _buildSocialButton("GitHub", Icons.code_rounded, () {
                 _launch(AppStrings.githubUrl);
               }),
-              const SizedBox(width: 10),
               _buildSocialButton("LinkedIn", Icons.work_outline_rounded, () {
                 _launch(AppStrings.linkedinUrl);
+              }),
+              _buildSocialButton("Download CV", Icons.download_rounded, () {
+                CvDownloadHelper.downloadCV();
               }),
             ],
           ),
@@ -157,10 +162,10 @@ class ContactSection extends StatelessWidget {
               width: 36,
               height: 36,
               decoration: BoxDecoration(
-                color: AppColors.accentIndigo.withValues(alpha: 0.1),
+                color: AppColors.accentPurple.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Icon(icon, color: AppColors.accentIndigo, size: 18),
+              child: Icon(icon, color: AppColors.accentPurple, size: 18),
             ),
             const SizedBox(width: 14),
             Column(

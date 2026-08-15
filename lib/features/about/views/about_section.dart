@@ -45,7 +45,7 @@ class AboutSection extends StatelessWidget {
                 // Section Header
                 const GlassChip(
                   label: "EXPERIENCE & BACKGROUND",
-                  color: AppColors.accentIndigo,
+                  color: AppColors.accentPurple,
                 ),
                 const SizedBox(height: 10),
                 Text(
@@ -91,19 +91,19 @@ class AboutSection extends StatelessWidget {
                 GlassContainer(
                   padding: const EdgeInsets.all(20),
                   borderRadius: 16,
-                  borderColor: AppColors.accentIndigo.withValues(alpha: 0.3),
+                  borderColor: AppColors.accentPurple.withValues(alpha: 0.3),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                          color: AppColors.accentIndigo.withValues(alpha: 0.15),
+                          color: AppColors.accentPurple.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: const Icon(
                           Icons.emoji_events_rounded,
-                          color: AppColors.accentIndigo,
+                          color: AppColors.accentPurple,
                           size: 24,
                         ),
                       ),
@@ -213,7 +213,7 @@ class AboutSection extends StatelessWidget {
             value,
             style: AppTypography.cardTitle(
               fontSize: 16,
-              color: AppColors.accentIndigo,
+              color: AppColors.accentPurple,
             ),
           ),
           const SizedBox(height: 2),
