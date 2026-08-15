@@ -1,10 +1,10 @@
 abstract class AppStrings {
   static const String developerName = "Aravind B";
   static const String developerTitle = "Senior Flutter Developer";
-  static const String yearsOfExperience = "5.6 Years";
+  static const String yearsOfExperience = "6 Years";
   static const String headline = "Building Scalable, High-Performance Cross-Platform Applications.";
   static const String heroSubhead =
-      "Senior Flutter Developer with 5.6 years of experience engineering enterprise mobile and web platforms serving millions of users. Specialized in SBI YONO banking flows, MobX, BLoC, Provider, Clean Architecture, and AI LLM integrations.";
+      "Senior Flutter Developer with 6 years of experience engineering enterprise mobile and web platforms serving millions of users. Specialized in SBI YONO banking flows, MobX, BLoC, Provider, Clean Architecture, and AI LLM integrations.";
 
   // Contact Info
   static const String phoneNumber = "+91 7907006203";
@@ -28,7 +28,7 @@ abstract class AppStrings {
   // About Section
   static const String aboutTitle = "Engineering Excellence & Enterprise Banking Scale";
   static const String aboutIntro =
-      "Senior Flutter Developer with 5.6 years of experience building scalable, high-performance cross-platform mobile & web applications. Currently at Tata Consultancy Services (TCS), leading critical modules in India's flagship banking platform — SBI YONO. Deep expertise in MobX, BLoC, Provider, offline-first SQLite architectures, DigiLocker identity integration, automated testing, and generative AI (Gemini LLM & RAG).";
+      "Senior Flutter Developer with 6 years of experience building scalable, high-performance cross-platform mobile & web applications. Currently at Tata Consultancy Services (TCS), leading critical modules in India's flagship banking platform — SBI YONO. Deep expertise in MobX, BLoC, Provider, offline-first SQLite architectures, DigiLocker identity integration, automated testing, and generative AI (Gemini LLM & RAG).";
 
   // Works Section
   static const String worksTitle = "Featured Enterprise & Production Applications";

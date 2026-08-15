@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - theme4
 
 permissions:
   contents: write

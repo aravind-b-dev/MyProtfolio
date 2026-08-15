@@ -76,7 +76,7 @@ class AboutSection extends StatelessWidget {
                         spacing: 12,
                         runSpacing: 12,
                         children: [
-                          _buildMetricCard("5.6+ Yrs", "Flutter Experience"),
+                          _buildMetricCard("6+ Yrs", "Flutter Experience"),
                           _buildMetricCard("SBI YONO", "Enterprise Banking"),
                           _buildMetricCard("TCS", "Current Employer"),
                           _buildMetricCard("AI & RAG", "Gemini LLM Integration"),

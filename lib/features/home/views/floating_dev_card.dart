@@ -203,7 +203,7 @@ class _FloatingDevCardState extends State<FloatingDevCard>
             // ── Stat Row ──────────────────────────────────────────────
             Row(
               children: [
-                _buildStatBox("5.6+", "Years"),
+                _buildStatBox("6+", "Years"),
                 const SizedBox(width: 12),
                 _buildStatBox("TCS", "Company"),
                 const SizedBox(width: 12),
