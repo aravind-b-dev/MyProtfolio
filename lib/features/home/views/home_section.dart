@@ -8,7 +8,8 @@ import '../../../core/widgets/glass_button.dart';
 import '../../../core/widgets/glass_chip.dart';
 import '../../../core/widgets/scroll_reveal.dart';
 import '../../navigation/nav_controller.dart';
-import 'floating_dev_card.dart';
+import 'hero_profile_frame.dart';
+import 'tech_ticker_bar.dart';
 
 class HomeSection extends StatelessWidget {
   final NavController navController;
@@ -26,8 +27,8 @@ class HomeSection extends StatelessWidget {
         minHeight: MediaQuery.of(context).size.height,
       ),
       padding: EdgeInsets.only(
-        top: isMobile ? 110 : 150,
-        bottom: 80,
+        top: isMobile ? 100 : 140,
+        bottom: 60,
         left: isMobile ? 20 : (isTablet ? 40 : 80),
         right: isMobile ? 20 : (isTablet ? 40 : 80),
       ),
@@ -38,9 +39,15 @@ class HomeSection extends StatelessWidget {
           ),
           child: ScrollReveal(
             keyName: 'home_section',
-            child: ResponsiveLayout(
-              mobile: _buildMobileLayout(context),
-              desktop: _buildDesktopLayout(context),
+            child: Column(
+              children: [
+                ResponsiveLayout(
+                  mobile: _buildMobileLayout(context),
+                  desktop: _buildDesktopLayout(context),
+                ),
+                const SizedBox(height: 60),
+                const TechTickerBar(),
+              ],
             ),
           ),
         ),
@@ -52,11 +59,17 @@ class HomeSection extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        // Left Column: Hero Text & CTAs
-        Expanded(flex: 6, child: _buildHeroContent(context)),
+        // Left Column: Greeting, Name, Role & Action Buttons
+        Expanded(
+          flex: 6,
+          child: _buildHeroContent(context),
+        ),
         const SizedBox(width: 40),
-        // Right Column: Futuristic Developer Floating Glass Card
-        const Expanded(flex: 5, child: Center(child: FloatingDevCard())),
+        // Right Column: Profile Picture Ring Frame (Reference style)
+        const Expanded(
+          flex: 5,
+          child: Center(child: HeroProfileFrame()),
+        ),
       ],
     );
   }
@@ -65,9 +78,9 @@ class HomeSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildHeroContent(context),
+        const Center(child: HeroProfileFrame()),
         const SizedBox(height: 50),
-        const Center(child: FloatingDevCard()),
+        _buildHeroContent(context),
       ],
     );
   }
@@ -79,55 +92,62 @@ class HomeSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Status Badge Row
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-          decoration: BoxDecoration(
-            color: AppColors.glassBase,
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(
-              color: AppColors.accentCyan.withValues(alpha: 0.3),
-              width: 1.0,
+        // Top Greeting (Reference image style: Hello .)
+        Row(
+          children: [
+            Text(
+              "Hello",
+              style: AppTypography.heroTitle(
+                fontSize: isMobile ? 32 : 44,
+              ).copyWith(
+                fontWeight: FontWeight.w800,
+                color: AppColors.textPrimary,
+              ),
             ),
-            boxShadow: [
-              BoxShadow(
-                color: AppColors.accentCyan.withValues(alpha: 0.1),
-                blurRadius: 12,
+            const SizedBox(width: 4),
+            Container(
+              width: 12,
+              height: 12,
+              decoration: const BoxDecoration(
+                color: Color(0xFFFF5252),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xFFFF5252),
+                    blurRadius: 10,
+                    spreadRadius: 2,
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                width: 8,
-                height: 8,
-                decoration: const BoxDecoration(
-                  color: AppColors.accentEmerald,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.accentEmerald,
-                      blurRadius: 6,
-                      spreadRadius: 1,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 10),
-              Text(
-                "${AppStrings.developerTitle.toUpperCase()} • ${AppStrings.yearsOfExperience}",
-                style: AppTypography.badgeTag(
-                  color: AppColors.accentCyan,
-                  fontSize: 11.5,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 12),
 
-        // Main Headline with Gradient
+        // Accent Line + Name Tag (Reference image style: —— I'm Jensen)
+        Row(
+          children: [
+            Container(
+              width: 40,
+              height: 3,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFF5252),
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text(
+              "I'm ${AppStrings.developerName}",
+              style: AppTypography.sectionTitle(
+                fontSize: isMobile ? 22 : 30,
+                color: AppColors.textSecondary,
+              ).copyWith(fontWeight: FontWeight.w500),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
+
+        // Headline / Large Role Title
         ShaderMask(
           shaderCallback: (bounds) => const LinearGradient(
             colors: [
@@ -139,54 +159,67 @@ class HomeSection extends StatelessWidget {
             end: Alignment.bottomRight,
           ).createShader(bounds),
           child: Text(
-            AppStrings.headline,
-            style: AppTypography.heroTitle(fontSize: isMobile ? 36 : 54),
+            "Senior Flutter\nDeveloper",
+            style: AppTypography.heroTitle(
+              fontSize: isMobile ? 40 : 64,
+            ).copyWith(height: 1.05),
           ),
         ),
         const SizedBox(height: 20),
 
-        // Supporting Text
+        // Subtitle / Bio summary
         Text(
           AppStrings.heroSubhead,
-          style: AppTypography.bodyLarge(fontSize: isMobile ? 15 : 17.5),
+          style: AppTypography.bodyLarge(
+            fontSize: isMobile ? 15 : 17.5,
+          ),
         ),
-        const SizedBox(height: 32),
+        const SizedBox(height: 28),
 
         // Quick Highlights Chips
         Wrap(
           spacing: 10,
           runSpacing: 10,
           children: const [
-            GlassChip(label: "SBI YONO Banking", color: AppColors.accentCyan),
-            GlassChip(
-              label: "MobX & BLoC Architecture",
-              color: AppColors.accentPurple,
-            ),
-            GlassChip(label: "AI RAG Chatbots", color: AppColors.accentBlue),
-            GlassChip(
-              label: "Cross-Platform Web & Mobile",
-              color: AppColors.accentEmerald,
-            ),
+            GlassChip(label: "SBI YONO Banking", color: Color(0xFFFF5252)),
+            GlassChip(label: "MobX & BLoC", color: AppColors.accentCyan),
+            GlassChip(label: "AI RAG Chatbots", color: AppColors.accentPurple),
+            GlassChip(label: "Clean Architecture", color: AppColors.accentEmerald),
           ],
         ),
         const SizedBox(height: 36),
 
-        // CTAs
+        // Action CTAs (Reference image style: "Got a project?" solid button + "Explore Work" outline button)
         Wrap(
           spacing: 16,
           runSpacing: 16,
           children: [
+            ElevatedButton.icon(
+              onPressed: () => navController.scrollToSection('CONTACT'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFFF5252),
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 18),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                elevation: 8,
+                shadowColor: const Color(0xFFFF5252).withValues(alpha: 0.5),
+              ),
+              icon: const Icon(Icons.rocket_launch_rounded, size: 20),
+              label: Text(
+                "Got a project?",
+                style: AppTypography.badgeTag(
+                  color: Colors.white,
+                  fontSize: 14,
+                ).copyWith(fontWeight: FontWeight.w700),
+              ),
+            ),
             GlassButton(
               text: AppStrings.viewMyWork,
               icon: Icons.arrow_downward_rounded,
-              isPrimary: true,
-              onPressed: () => navController.scrollToSection('WORKS'),
-            ),
-            GlassButton(
-              text: AppStrings.letsConnect,
-              icon: Icons.alternate_email_rounded,
               isPrimary: false,
-              onPressed: () => navController.scrollToSection('CONTACT'),
+              onPressed: () => navController.scrollToSection('WORKS'),
             ),
           ],
         ),
