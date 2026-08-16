@@ -16,12 +16,13 @@ class TechTickerBar extends StatelessWidget {
       "BLoC",
       "Provider",
       "Clean Architecture",
-      "DigiLocker API",
+      "CI/CD",
       "SQLite",
       "REST APIs",
       "Firebase",
-      "Gemini AI",
+      "Python",
       "SwiftUI",
+      "Agile / Scrum",
     ];
 
     return ClipRRect(
@@ -35,10 +36,7 @@ class TechTickerBar extends StatelessWidget {
             color: AppColors.glassBase,
             gradient: AppColors.glassFillGradient,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: AppColors.glassBorder,
-              width: 1.0,
-            ),
+            border: Border.all(color: AppColors.glassBorder, width: 1.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.35),
@@ -75,10 +73,7 @@ class TechTickerBar extends StatelessWidget {
                 spacing: 10,
                 runSpacing: 10,
                 children: techStack.map((tech) {
-                  return GlassChip(
-                    label: tech,
-                    color: AppColors.accentIndigo,
-                  );
+                  return GlassChip(label: tech, color: AppColors.accentIndigo);
                 }).toList(),
               ),
             ],
