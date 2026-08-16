@@ -66,6 +66,22 @@ class _ContactFormState extends State<ContactForm> {
           ),
         ),
       );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: AppColors.bgSurface,
+          content: Row(
+            children: const [
+              Icon(Icons.error_outline_rounded, color: Colors.redAccent),
+              SizedBox(width: 12),
+              Text(
+                "Failed to send message. Please try again or email directly.",
+                style: TextStyle(color: AppColors.textPrimary),
+              ),
+            ],
+          ),
+        ),
+      );
     }
   }
 

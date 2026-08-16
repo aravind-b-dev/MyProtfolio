@@ -64,7 +64,7 @@ class ContactSection extends StatelessWidget {
                     children: [
                       _buildContactInfo(context),
                       const SizedBox(height: 24),
-                      ContactForm(contactService: MockContactService()),
+                      ContactForm(contactService: Web3FormsContactService()),
                     ],
                   ),
                   desktop: Row(
@@ -77,7 +77,7 @@ class ContactSection extends StatelessWidget {
                       const SizedBox(width: 32),
                       Expanded(
                         flex: 7,
-                        child: ContactForm(contactService: MockContactService()),
+                        child: ContactForm(contactService: Web3FormsContactService()),
                       ),
                     ],
                   ),
