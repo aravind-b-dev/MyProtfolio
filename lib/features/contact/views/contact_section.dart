@@ -31,7 +31,9 @@ class ContactSection extends StatelessWidget {
       ),
       child: Center(
         child: Container(
-          constraints: const BoxConstraints(maxWidth: Breakpoints.maxContentWidth),
+          constraints: const BoxConstraints(
+            maxWidth: Breakpoints.maxContentWidth,
+          ),
           child: ScrollReveal(
             keyName: 'contact_section',
             child: Column(
@@ -70,14 +72,13 @@ class ContactSection extends StatelessWidget {
                   desktop: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        flex: 5,
-                        child: _buildContactInfo(context),
-                      ),
+                      Expanded(flex: 5, child: _buildContactInfo(context)),
                       const SizedBox(width: 32),
                       Expanded(
                         flex: 7,
-                        child: ContactForm(contactService: Web3FormsContactService()),
+                        child: ContactForm(
+                          contactService: Web3FormsContactService(),
+                        ),
                       ),
                     ],
                   ),
@@ -151,9 +152,15 @@ class ContactSection extends StatelessWidget {
   }
 
   Widget _buildInfoItem(
-      IconData icon, String label, String value, VoidCallback? onTap) {
+    IconData icon,
+    String label,
+    String value,
+    VoidCallback? onTap,
+  ) {
     return MouseRegion(
-      cursor: onTap != null ? SystemMouseCursors.click : SystemMouseCursors.basic,
+      cursor: onTap != null
+          ? SystemMouseCursors.click
+          : SystemMouseCursors.basic,
       child: GestureDetector(
         onTap: onTap,
         child: Row(
@@ -203,10 +210,7 @@ class ContactSection extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.bgDark,
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: AppColors.glassBorder,
-              width: 1.0,
-            ),
+            border: Border.all(color: AppColors.glassBorder, width: 1.0),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -215,7 +219,10 @@ class ContactSection extends StatelessWidget {
               const SizedBox(width: 6),
               Text(
                 label,
-                style: AppTypography.badgeTag(color: AppColors.textPrimary, fontSize: 11.5),
+                style: AppTypography.badgeTag(
+                  color: AppColors.textPrimary,
+                  fontSize: 11.5,
+                ),
               ),
             ],
           ),
