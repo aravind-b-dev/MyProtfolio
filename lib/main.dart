@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 import 'features/home/views/portfolio_page.dart';
 
+import 'package:visibility_detector/visibility_detector.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  VisibilityDetectorController.instance.updateInterval = Duration.zero;
   runApp(const SeniorFlutterPortfolioApp());
 }
 

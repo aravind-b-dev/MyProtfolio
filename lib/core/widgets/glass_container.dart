@@ -82,13 +82,20 @@ class _GlassContainerState extends State<GlassContainer> {
       child: widget.child,
     );
 
-    Widget clipWidget = ClipRRect(
-      borderRadius: BorderRadius.circular(widget.borderRadius),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: widget.blur, sigmaY: widget.blur),
-        child: containerContent,
-      ),
-    );
+    final isMobile = MediaQuery.of(context).size.width < 768;
+
+    Widget clipWidget = isMobile
+        ? ClipRRect(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            child: containerContent,
+          )
+        : ClipRRect(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: widget.blur, sigmaY: widget.blur),
+              child: containerContent,
+            ),
+          );
 
     if (widget.onTap != null || widget.enableHoverEffect) {
       return MouseRegion(

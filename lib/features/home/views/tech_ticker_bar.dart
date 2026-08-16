@@ -25,11 +25,9 @@ class TechTickerBar extends StatelessWidget {
       "Agile / Scrum",
     ];
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-        child: Container(
+    final isMobile = MediaQuery.of(context).size.width < 768;
+
+    final containerContent = Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
           decoration: BoxDecoration(
@@ -78,8 +76,16 @@ class TechTickerBar extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
+        );
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: isMobile
+          ? containerContent
+          : BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
+              child: containerContent,
+            ),
     );
   }
 }

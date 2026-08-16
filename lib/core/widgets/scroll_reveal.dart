@@ -11,8 +11,8 @@ class ScrollReveal extends StatefulWidget {
     super.key,
     required this.child,
     required this.keyName,
-    this.duration = const Duration(milliseconds: 600),
-    this.slideOffset = 30.0,
+    this.duration = const Duration(milliseconds: 350),
+    this.slideOffset = 15.0,
   });
 
   @override
@@ -44,7 +44,7 @@ class _ScrollRevealState extends State<ScrollReveal>
       end: Offset.zero,
     ).animate(CurvedAnimation(
       parent: _controller,
-      curve: Curves.easeOutCubic,
+      curve: Curves.easeOutQuad,
     ));
   }
 
@@ -55,7 +55,7 @@ class _ScrollRevealState extends State<ScrollReveal>
   }
 
   void _onVisibilityChanged(VisibilityInfo info) {
-    if (!_hasRevealed && info.visibleFraction > 0.15) {
+    if (!_hasRevealed && (info.visibleFraction > 0.01 || info.visibleBounds.height > 10)) {
       _hasRevealed = true;
       _controller.forward();
     }
