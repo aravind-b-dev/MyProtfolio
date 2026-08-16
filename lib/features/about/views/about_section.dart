@@ -113,7 +113,7 @@ class AboutSection extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "TCS AI Hackathon Winner (Season 2) • SBI YONO 2.0 Team",
+                              "TCS AI Hackathon Participant (Season 2) • SBI YONO 2.0 Team",
                               style: AppTypography.cardTitle(fontSize: 17),
                             ),
                             const SizedBox(height: 6),

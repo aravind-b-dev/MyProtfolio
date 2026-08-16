@@ -46,7 +46,7 @@ class EngineeringPillarsSection extends StatelessWidget {
         accentColor: AppColors.accentEmerald,
         description:
             "Pioneered AI RAG chatbots using Python and Gemini LLM for SBI YONO 2.0. Eliminating hallucinations while preserving user data privacy.",
-        tags: ["Gemini LLM", "RAG Pipeline", "TCS AI Winner"],
+        tags: ["Gemini LLM", "RAG Pipeline", "TCS AI Hackathon"],
       ),
     ];
 
@@ -57,7 +57,9 @@ class EngineeringPillarsSection extends StatelessWidget {
       ),
       child: Center(
         child: Container(
-          constraints: const BoxConstraints(maxWidth: Breakpoints.maxContentWidth),
+          constraints: const BoxConstraints(
+            maxWidth: Breakpoints.maxContentWidth,
+          ),
           child: ScrollReveal(
             keyName: 'engineering_pillars',
             child: Column(
@@ -85,7 +87,7 @@ class EngineeringPillarsSection extends StatelessWidget {
                     crossAxisCount: isMobile ? 1 : 2,
                     crossAxisSpacing: 16,
                     mainAxisSpacing: 16,
-                    childAspectRatio: isMobile ? 1.2 : 1.6,
+                    childAspectRatio: isMobile ? 1.5 : (isTablet ? 1.9 : 2.3),
                   ),
                   itemBuilder: (context, index) {
                     final item = pillars[index];
@@ -101,12 +103,18 @@ class EngineeringPillarsSection extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(item.icon, color: item.accentColor, size: 22),
+                                  Icon(
+                                    item.icon,
+                                    color: item.accentColor,
+                                    size: 22,
+                                  ),
                                   const SizedBox(width: 10),
                                   Expanded(
                                     child: Text(
                                       item.title,
-                                      style: AppTypography.cardTitle(fontSize: 17),
+                                      style: AppTypography.cardTitle(
+                                        fontSize: 17,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -125,10 +133,12 @@ class EngineeringPillarsSection extends StatelessWidget {
                             spacing: 6,
                             runSpacing: 6,
                             children: item.tags
-                                .map((t) => GlassChip(
-                                      label: t,
-                                      color: item.accentColor,
-                                    ))
+                                .map(
+                                  (t) => GlassChip(
+                                    label: t,
+                                    color: item.accentColor,
+                                  ),
+                                )
                                 .toList(),
                           ),
                         ],
